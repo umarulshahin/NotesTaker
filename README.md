@@ -98,6 +98,9 @@ Ensure MySQL is installed and running.
 Update DATABASES settings in settings.py with your credentials.
 
 Use .env for storing sensitive credentials.
+
+Here are the screenshots for all the features: https://docs.google.com/document/d/1fR1YXKGzL48vX6VbfESbT2yNoqRkYoM_QUPDTzEJU3g/edit?usp=sharing
+
  
 
 Happy Coding! 🚀🎯
