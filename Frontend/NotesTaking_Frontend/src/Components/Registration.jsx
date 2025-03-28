@@ -2,7 +2,7 @@ import React from 'react';
 import { Formik, Form, Field, ErrorMessage } from 'formik';
 import * as Yup from 'yup';
 import Header from './Header';
-
+import useAuth from '../Hooks/useAuth';
 const Registration = () => {
   // Validation schema using Yup
   const validationSchema =  Yup.object().shape({
@@ -19,7 +19,8 @@ const Registration = () => {
         "Password must be at least 8 characters long, include at least one uppercase letter, one number, and one special character"
       )
       .required("Password is required"),
-    confirmPassword: Yup.string()
+    
+    con_password: Yup.string()
       .oneOf([Yup.ref("password"), null], "Passwords must match")
       .required("Confirm password is required"),
   });
@@ -29,13 +30,16 @@ const Registration = () => {
     username: '',
     email: '',
     password: '',
-    confirmPassword: ''
+    con_password: ''
   };
+
+   const { Register_Axios } = useAuth();
+
 
   // Handle form submission
   const handleSubmit = (values, { setSubmitting }) => {
-    // TODO: Implement registration logic
     console.log('Registration submitted', values);
+    Register_Axios(values, setSubmitting);
     setSubmitting(false);
   };
 
@@ -112,12 +116,12 @@ const Registration = () => {
                   <span className='font-bold font-serif'>Confirm Password</span>
                   <Field
                     type="password"
-                    name="confirmPassword"
+                    name="con_password"
                     placeholder="Confirm Password"
                     className="w-full p-3 border font-serif rounded-lg bg-white focus:outline-none focus:ring-2 focus:ring-blue-500"
                   />
                   <ErrorMessage 
-                    name="confirmPassword" 
+                    name="con_password" 
                     component="div" 
                     className="text-red-500 bg-red-200 rounded px-2 text-sm mt-1" 
                   />
