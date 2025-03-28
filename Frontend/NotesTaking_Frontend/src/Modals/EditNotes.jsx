@@ -27,11 +27,15 @@ const EditNotes = ({
   };
 
   return (
-    <div className="fixed inset-0 z-50 flex items-center justify-center bg-yellow-100 bg-opacity-50">
-      <div className="bg-white rounded-lg border shadow-xl w-[500px] max-h-[80vh]">
+    <div className="fixed inset-0 z-50 flex items-center justify-center 
+      bg-black/40 backdrop-blur-sm animate-fade-in">
+      <div className="bg-white rounded-lg border shadow-xl 
+        w-[90%] max-w-[500px] sm:w-[500px] max-h-[80vh] 
+        transform transition-all duration-300 scale-100 
+        animate-scale-up">
         <div className="bg-orange-300 border-b px-4 py-3 flex justify-between items-center rounded-t-lg">
-          <h2 className="text-lg font-semibold text-gray-800 flex items-center">
-          {initialNote?.title || 'Untitled Note'}
+          <h2 className="text-lg font-semibold text-gray-800 flex items-center truncate">
+            {initialNote?.title || 'Untitled Note'}
           </h2>
           <button 
             onClick={onClose} 
@@ -42,7 +46,6 @@ const EditNotes = ({
         </div>
 
         <div className="p-6 bg-yellow-100 border rounded-b-lg">
-     
           <div className="mb-6">
             <textarea
               id="note-content"
@@ -56,7 +59,7 @@ const EditNotes = ({
           </div>
 
           <div className="flex justify-end space-x-4">
-          <button
+            <button
               onClick={handleSave}
               className="bg-green-500 text-white px-4 py-2 rounded-md 
                          hover:bg-green-600 transition duration-300 
@@ -72,8 +75,6 @@ const EditNotes = ({
             >
               Cancel
             </button>
-            
-            
           </div>
         </div>
       </div>
