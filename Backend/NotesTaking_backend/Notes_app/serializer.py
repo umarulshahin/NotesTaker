@@ -6,8 +6,8 @@ class NotesSerializer(serializers.ModelSerializer):
     
     class Meta: 
         model = Notes
-        fields = ['title', 'content', 'user']
-        read_only_fields = ['created_on', 'latest_update']
+        fields = ['id', 'title', 'content', 'user','created_on', 'latest_update']
+        read_only_fields = ['created_on', 'latest_update','id']
     
     def validate(self, data):
         base_pattern = r'^[A-Za-z].{2,}$'
