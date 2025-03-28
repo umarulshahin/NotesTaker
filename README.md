@@ -22,8 +22,8 @@ Notes Taking App 📒
    Clone the repository:
 
    
-    git clone https://github.com/your-repo-link.git
-    cd your-repo-folder
+    git clone [https://github.com/umarulshahin/NotesTaker.git]
+    cd Backend
     Create a virtual environment:
 
    
@@ -34,11 +34,26 @@ Notes Taking App 📒
 
    
     pip install -r requirements.txt
-    Configure .env file (if needed)
+ 
+Database Setup (MySQL)
+  Ensure MySQL is installed and running on your system.
+
+Configure .env file inside the project folder:
+
+Create a .env file in the root project directory and add:
+        
+        DATABASE_URL=mysql://your_mysql_user:your_mysql_password@localhost:3306/notes_app
+        SECRET_KEY=your_secret_key
+
 
 Apply migrations:
 
+    python manage.py makemigrations
     python manage.py migrate
+
+Change directory after migration:
+
+    cd NotesTaking_backend
     
 Run the server:
 
