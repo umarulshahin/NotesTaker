@@ -11,7 +11,9 @@ Notes Taking App 📒
 🚀 Features
 
    User Authentication (Sign In / Sign Up)
+   
    Create, View, Edit, and Delete Notes
+   
    Optimized Code with Reusable Components
 
 🏗️ Setup & Installation
@@ -60,12 +62,19 @@ Start the React app:
 🛠️ API Endpoints
 
 Method	Endpoint	Description
+
 POST	registration/	 Register User
+
 POST	login/	 Login User
+
 Post  token/refresh/  Token refresh 
+
 GET  	notes_management/ 	Fetch Notes
+
 POST	notes_management/ 	Create Note
+
 PUT	  notes_management/ 	Update Note
+
 DELETE	notes_management/ 	Delete Note
 
 📌 Notes
