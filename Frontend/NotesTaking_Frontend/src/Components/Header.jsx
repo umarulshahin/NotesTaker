@@ -18,7 +18,7 @@ const Header = () => {
 
     }
   return (
-    <header className="bg-sky-200 py-4 px-4 md:px-26 flex justify-between items-center shadow-md">
+    <header className="bg-sky-200 py-4 px-4 md:px-12 flex justify-between items-center shadow-md">
       <div className="text-2xl font-bold text-blue-900">
         Keep Notes
       </div>

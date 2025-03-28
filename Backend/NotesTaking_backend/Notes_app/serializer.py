@@ -4,11 +4,21 @@ from .models import Notes
 
 class NotesSerializer(serializers.ModelSerializer):
     
+    formatted_date = serializers.SerializerMethodField()
+
     class Meta: 
         model = Notes
-        fields = ['id', 'title', 'content', 'user','created_on', 'latest_update']
+        fields = ['id', 'title', 'content', 'user','created_on', 'latest_update','formatted_date']
         read_only_fields = ['created_on', 'latest_update','id']
     
+    def get_formatted_date(self, obj):
+        
+        date = obj.latest_update 
+        
+        if not date:
+            return None
+        
+        return date.strftime("%b %d, %Y  ")
     def validate(self, data):
         base_pattern = r'^[A-Za-z].{2,}$'
 

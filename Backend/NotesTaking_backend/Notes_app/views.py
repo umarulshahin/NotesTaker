@@ -22,7 +22,7 @@ class Notes_Management(APIView):
     #............get all notes............
     def get(self,request): 
         
-        id = request.data.get('id')
+        id = request.GET.get('id')
         
         if not id : 
             return Response('Please provide id', status=status.HTTP_400_BAD_REQUEST)
@@ -56,7 +56,8 @@ class Notes_Management(APIView):
             return Response(serializer.errors, status=status.HTTP_400_BAD_REQUEST)
         except Notes.DoesNotExist:
             return Response('Note does not exist', status=status.HTTP_400_BAD_REQUEST)
-        
+    
+    # ............delete notes............
     def delete(self,request): 
         
         id = request.data.get('id')
