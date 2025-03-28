@@ -2,18 +2,30 @@ import React, { useEffect, useState } from 'react';
 import { Trash2, Edit2, } from 'lucide-react';
 import useNotes from '../Hooks/useNotes';
 import { useSelector } from 'react-redux';
+import DeleteNote from '../Modals/DeleteNote';
 
 const Notes = () => {
   const notes = useSelector((state)=>state.userdata.Notes)
-  const {GetNotes_Axios} = useNotes();
+  const {GetNotes_Axios,DeleteNote_Axios} = useNotes();
+  const [deleteModalOpen, setDeleteModalOpen] = useState(false);
+  const [noteToDelete, setNoteToDelete] = useState(null);
+  
 
   useEffect(()=>{
-     GetNotes_Axios()
+    GetNotes_Axios()
+
   },[])
-  
-  const handleDeleteNote = (note)=>{
-    console.log(note,'notes')
-  }
+
+  const handleDeleteClick = (note) => {
+    setNoteToDelete(note);
+    setDeleteModalOpen(true);
+  };
+
+  const confirmDelete = () => {
+    console.log('Deleting note:', noteToDelete);
+    DeleteNote_Axios(noteToDelete.id);
+    setDeleteModalOpen(false);
+  };
   const handleEditNote = (note) => {
     // Implement edit logic
     console.log('Edit note:', note);
@@ -44,7 +56,7 @@ const Notes = () => {
                     <Edit2 size={16} />
                   </button>
                   <button 
-                    onClick={() => handleDeleteNote(note)}
+                    onClick={() => handleDeleteClick(note)}
                     className="text-red-500 cursor-pointer hover:text-red-600 coursor-pointer transition duration-300"
                   >
                     <Trash2 size={16}  />
@@ -67,6 +79,13 @@ const Notes = () => {
           ))}
         </div>
       )}
+
+   <DeleteNote
+        isOpen={deleteModalOpen}
+        onClose={() => setDeleteModalOpen(false)}
+        onConfirmDelete={confirmDelete}
+        noteTitle={noteToDelete?.title}
+      />
     </div>
   );
 };

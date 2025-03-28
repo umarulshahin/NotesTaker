@@ -13,18 +13,19 @@ const Dashboard = () => {
   useEffect(() => {
     // Get current hour
     const currentHour = new Date().getHours();
-
-    // Determine greeting based on time
-    let time;
-    if (currentHour < 12) {
-      time = 'Good Morning';
-    } else if (currentHour < 18) {
-      time = 'Good Afternoon';
-    } else {
-      time = 'Good Evening';
+    if(user && user.length !== 0){
+        let time;
+        if (currentHour < 12) {
+          time = 'Good Morning';
+        } else if (currentHour < 18) {
+          time = 'Good Afternoon';
+        } else {
+          time = 'Good Evening';
+        }
+    
+        setGreeting(`${time}, ${ user.username}`);
     }
-
-    setGreeting(`${time}, ${user.username}`);
+    
   }, [user]);
 
   const handleSubmit = (noteData) => {
