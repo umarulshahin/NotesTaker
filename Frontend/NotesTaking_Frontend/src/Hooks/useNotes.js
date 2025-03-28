@@ -81,7 +81,32 @@ const useNotes = () => {
     }
   };
 
-  return { AddNotes_Axios, GetNotes_Axios,DeleteNote_Axios };
+  const EditNote_Axios = async (note) => {
+
+    try{
+
+      const response = await UserAxios.put(Notes_Management_Urls,note,{
+          headers:{
+              "Content-Type" : "application/json"
+          }
+      })
+      if(response.status === 200){
+          GetNotes_Axios()
+          console.log(response.data,'edit note response')
+          toast.success(response.data.message)
+      }
+  }catch(error){
+      console.error(error,'edit note error')
+      if(error.response.status === 401){
+          toast.error("Unauthorized access. Please log in again.")
+      }else{
+          toast.warning('Something went wrong. Please try again.')
+      }
+  }
+
+  };
+
+  return { AddNotes_Axios, GetNotes_Axios,DeleteNote_Axios,EditNote_Axios };
 };
 
 export default useNotes;
