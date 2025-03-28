@@ -44,6 +44,7 @@ INSTALLED_APPS = [
     'django.contrib.staticfiles',
     
     'Authentication',
+    'Notes_app',
     
     'rest_framework',
     'rest_framework_simplejwt',

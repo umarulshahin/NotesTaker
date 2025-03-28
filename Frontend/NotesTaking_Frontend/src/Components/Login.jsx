@@ -1,6 +1,7 @@
 import React, { useState } from 'react';
 import Header from './Header';
 import useAuth from '../Hooks/useAuth';
+import { useNavigate } from 'react-router-dom';
 
 const Login = () => {
   const [email, setEmail] = useState('');
@@ -28,10 +29,10 @@ const Login = () => {
 
 
   const {Login_Axios}= useAuth();
+  const navigate = useNavigate()
   const handleSubmit = (e) => {
     e.preventDefault();
     if (validateForm()) {
-      console.log('Login submitted', { email, password });
       Login_Axios({ email, password });
     }
   };
@@ -91,6 +92,7 @@ const Login = () => {
                 Login
               </button>
               <button
+               onClick={()=> navigate('/register')}
                 type="button"
                 className="flex-1 font-serif text-black p-2 rounded-lg bg-sky-200 hover:bg-sky-300 cursor-pointer transition duration-300"
               >

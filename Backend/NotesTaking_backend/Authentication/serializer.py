@@ -16,7 +16,7 @@ class RegistrationSerializer(serializers.ModelSerializer):
     #........................ validation for email, username and password........................
     def validate(self, attrs):
         
-        username_pattern = r'^[A-Za-z][A-Za-z0-9_]{3,}$'
+        username_pattern = r'^[A-Za-z].{2,}$'
         email_pattern = r'^[\w\.-]+@[\w\.-]+\.\w+$'
         password_pattern = r'^(?=.*[A-Z])(?=.*\d)(?=.*[!@#$%^&*])[A-Za-z\d!@#$%^&*]{8,}$'
         

@@ -3,6 +3,7 @@ import { Formik, Form, Field, ErrorMessage } from 'formik';
 import * as Yup from 'yup';
 import Header from './Header';
 import useAuth from '../Hooks/useAuth';
+import { useNavigate } from 'react-router-dom';
 const Registration = () => {
   // Validation schema using Yup
   const validationSchema =  Yup.object().shape({
@@ -34,6 +35,7 @@ const Registration = () => {
   };
 
    const { Register_Axios } = useAuth();
+   const navigate = useNavigate()
 
 
   // Handle form submission
@@ -136,6 +138,8 @@ const Registration = () => {
                     Register
                   </button>
                   <button
+                    onClick={()=> navigate('/')}
+
                     type="button"
                     className="flex-1 font-serif text-black p-2 rounded-lg bg-orange-300 hover:bg-orange-400 cursor-pointer transition duration-300"
                   >

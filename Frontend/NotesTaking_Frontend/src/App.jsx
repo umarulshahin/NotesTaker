@@ -9,6 +9,8 @@ import { PersistGate } from "redux-persist/integration/react";
 import { appStore, persist } from "./Redux/Store";
 import { Provider } from "react-redux";
 import Dashboard from "./Components/Dashboard";
+import PrivetRoute from "./PrivetRoute";
+import AuthPrivetRoute from "./AuthPrivetRoute";
 function App() {
   return (
     <>
@@ -17,10 +19,13 @@ function App() {
           <Toaster richColors position="top-center" />
           <Router>
             <Routes>
-              <Route path="/" element={<Login />} />
-              <Route path="register/" element={<Registration />} />
-              <Route path="dashboard/" element={<Main_Layout />} />
+              <Route path="/" element={<AuthPrivetRoute><Login /></AuthPrivetRoute>} />
+              <Route path="register/" element={<AuthPrivetRoute><Registration /></AuthPrivetRoute>} />
+              <Route path="dashboard/" element={<PrivetRoute><Main_Layout /></PrivetRoute >}>
                  <Route index element={<Dashboard />} />
+              </Route>
+
+
             </Routes>
           </Router>
         </PersistGate>
